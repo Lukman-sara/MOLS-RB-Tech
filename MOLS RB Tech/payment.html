@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Simulasi Pembayaran Multi-Gateway | MOLS RB Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="toast-container" class="toast-container"></div>
+    
+    <div class="payment-container" id="payment-view-main">
+        <div class="payment-card bg-white" id="payment-selection-panel">
+            <h1 class="text-center">Secure Payment Gateway Simulation</h1>
+            <p class="text-center subtitle text-muted">Silakan pilih metode pembayaran formal untuk menyelesaikan pesanan Anda.</p>
+            
+            <div class="order-bill-badge text-center">
+                <span>TOTAL TAGIHAN:</span>
+                <h2 id="billing-amount">Rp 0</h2>
+            </div>
+
+            <div class="gateway-channel-group">
+                <h3>Metode Pembayaran Instan & Transfer</h3>
+                
+                <div class="gateway-option" data-method="DANA">
+                    <i class="fa-solid fa-wallet text-primary"></i>
+                    <div>
+                        <h4>E-Wallet DANA</h4>
+                        <p>Bayar instan via Akun Dana Bisnis (082124135338)</p>
+                    </div>
+                </div>
+
+                <div class="gateway-option" data-method="GOPAY">
+                    <i class="fa-solid fa-money-bill-wave text-accent"></i>
+                    <div>
+                        <h4>E-Wallet GoPay</h4>
+                        <p>Bayar instan cepat via QR/Nomor Gopay (082124135338)</p>
+                    </div>
+                </div>
+
+                <div class="gateway-option" data-method="BNI">
+                    <i class="fa-solid fa-building-columns text-secondary"></i>
+                    <div>
+                        <h4>Transfer Virtual Account BNI</h4>
+                        <p>No Rekening Yayasan/Bisnis: 1980269082 an MOLS RB Tech</p>
+                    </div>
+                </div>
+
+                <div class="gateway-option" data-method="MIDTRANS">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <h4>Midtrans Integration Simulator (Dummy)</h4>
+                        <p>Simulasi kartu kredit sandbox aman terenkripsi</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-execute-payment" class="btn btn-primary" style="width:100%; margin-top:2rem; padding:1.2rem; font-size:1.1rem;">
+                Bayar Sekarang & Ambil Faktur Resmi
+            </button>
+        </div>
+
+        <div class="invoice-card d-none" id="invoice-panel">
+            <div class="success-header text-center">
+                <i class="fa-solid fa-circle-check success-icon"></i>
+                <h2>Pembayaran Sukses Berhasil!</h2>
+                <p>Terima kasih atas kepercayaan Anda bertransaksi di MOLS RB Tech.</p>
+            </div>
+            
+            <div class="invoice-details-block">
+                <div class="invoice-row"><span>Nomor Invoice:</span><strong id="inv-id">INV-XXXXXXXX</strong></div>
+                <div class="invoice-row"><span>Status Pembayaran:</span><span class="badge badge-success">PAID / LUNAS</span></div>
+                <div class="invoice-row"><span>Nama Pembeli:</span><span id="inv-name">Pelanggan</span></div>
+                <div class="invoice-row"><span>Nomor WhatsApp:</span><span id="inv-phone">-</span></div>
+                <div class="invoice-row"><span>Tujuan Pengiriman:</span><p id="inv-address" style="margin:0; text-align:right; font-size:0.9rem; max-width:60%;"></p></div>
+                <div class="invoice-row"><span>Metode Yang Digunakan:</span><span id="inv-method" style="text-transform:uppercase; font-weight:600;">-</span></div>
+            </div>
+
+            <div class="invoice-items-table" id="inv-items-list">
+                </div>
+
+            <div class="invoice-summary-footer">
+                <div class="invoice-row font-bold"><span>Grand Total Akhir:</span><span id="inv-grandtotal">Rp 0</span></div>
+            </div>
+
+            <div class="invoice-action-buttons" style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <button onclick="window.print()" class="btn btn-secondary"><i class="fa-solid fa-print"></i> Cetak Invoice</button>
+                <a href="index.html" onclick="localStorage.removeItem('mols_cart')" class="btn btn-primary text-center" style="display:block; text-decoration:none; line-height:2.5;">Kembali Ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/products.data.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

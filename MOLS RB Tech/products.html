@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk Elektronik | MOLS RB Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="toast-container" class="toast-container"></div>
+    
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-brand">MOLS <span class="logo-rb">RB Tech</span></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item">Home</a></li>
+                    <li><a href="products.html" class="nav-item active">Produk</a></li>
+                    <li><a href="business-overview.html" class="nav-item">Tentang Kami</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="action-btn cart-trigger">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container layout-catalog">
+        <aside class="filter-sidebar">
+            <div class="filter-group">
+                <h3>Cari Produk</h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Nama, brand, kategori...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Kategori</h3>
+                <label class="filter-label"><input type="checkbox" class="filter-category" value="Smartphone"> Smartphone</label>
+                <label class="filter-label"><input type="checkbox" class="filter-category" value="Laptop"> Laptop</label>
+                <label class="filter-label"><input type="checkbox" class="filter-category" value="Aksesoris"> Aksesoris & Smartwatch</label>
+            </div>
+
+            <div class="filter-group">
+                <h3>Range Harga</h3>
+                <label class="filter-label"><input type="radio" name="filter-price" value="all" checked> Semua Harga</label>
+                <label class="filter-label"><input type="radio" name="filter-price" value="under-5m"> &lt; Rp 5 Juta</label>
+                <label class="filter-label"><input type="radio" name="filter-price" value="5m-10m"> Rp 5 - 10 Juta</label>
+                <label class="filter-label"><input type="radio" name="filter-price" value="10m-20m"> Rp 10 - 20 Juta</label>
+                <label class="filter-label"><input type="radio" name="filter-price" value="above-20m"> &gt; Rp 20 Juta</label>
+            </div>
+
+            <div class="filter-group">
+                <h3>Urutkan Berdasarkan</h3>
+                <select id="sort-select" class="sort-dropdown">
+                    <option value="default">Default</option>
+                    <option value="price-asc">Harga Termurah</option>
+                    <option value="price-desc">Harga Termahal</option>
+                    <option value="rating-desc">Rating Tertinggi</option>
+                </select>
+            </div>
+        </aside>
+
+        <section class="products-display">
+            <div class="catalog-header">
+                <h2>Semua Produk Elektronik</h2>
+                <p id="products-counter">Menampilkan seluruh item</p>
+            </div>
+            <div class="product-grid" id="catalog-grid">
+                </div>
+        </section>
+    </div>
+
+    <script src="js/products.data.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

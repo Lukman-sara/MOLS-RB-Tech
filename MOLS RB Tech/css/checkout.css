@@ -1,0 +1,25 @@
+/* Checkout Billing Form Page Rules Layout Styling stylesheet */
+.layout-checkout { display: grid; grid-template-columns: 1fr 400px; gap: 2.5rem; margin-top: 3rem; margin-bottom: 5rem; align-items: start; }
+.checkout-form-section { background: #fff; padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+body.dark-theme .checkout-form-section { background: #111827; }
+.checkout-form-section h2 { font-size: 1.5rem; margin-bottom: 2rem; color: var(--color-secondary); }
+
+.form-container { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
+.form-group label { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
+.form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); outline: none; font-family: inherit; font-size: 0.95rem; background: var(--bg-main); color: var(--text-dark); transition: var(--transition); }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0, 87, 255, 0.15); }
+.form-group textarea { height: 100px; resize: none; }
+.grid-form-3col { display: grid; grid-template-columns: 1fr 1fr 100px; gap: 1rem; }
+
+.error-msg { font-size: 0.75rem; color: #ef4444; font-weight: 500; display: none; margin-top: 0.25rem; }
+.form-group.invalid input, .form-group.invalid textarea { border-color: #ef4444; background: rgba(239, 68, 68, 0.03); }
+.form-group.invalid .error-msg { display: block; }
+
+.checkout-review-sidebar { background: #fff; border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+body.dark-theme .checkout-review-sidebar { background: #111827; }
+.checkout-item-preview-card { display: flex; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-color); }
+.checkout-item-preview-card:last-child { border-bottom: none; }
+.checkout-item-preview-card img { width: 50px; height: 50px; object-fit: contain; background: #fff; border-radius: 4px; }
+.preview-card-info h4 { font-size: 0.9rem; color: var(--color-secondary); font-weight: 600; line-height: 1.3; }
+.preview-card-info p { font-size: 0.8rem; color: var(--text-muted); }

@@ -1,0 +1,31 @@
+/* Interactive Payment Gateway Gateway Card Stylesheet module */
+.payment-container { display: flex; justify-content: center; align-items: center; min-height: 85vh; padding: 2rem 1rem; background: var(--bg-main); }
+.payment-card, .invoice-card { width: 100%; max-width: 580px; padding: 3rem 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: #ffffff; }
+body.dark-theme .payment-card, body.dark-theme .invoice-card { background: #111827; }
+
+.payment-card h1 { font-size: 1.6rem; color: var(--color-secondary); margin-bottom: 0.5rem; }
+.subtitle { font-size: 0.9rem; margin-bottom: 2rem; }
+.order-bill-badge { background: rgba(0, 87, 255, 0.05); border: 1px solid rgba(0, 87, 255, 0.15); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2.5rem; }
+.order-bill-badge span { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; }
+.order-bill-badge h2 { font-size: 2rem; color: var(--color-primary); font-weight: 700; margin-top: 0.25rem; }
+
+.gateway-channel-group h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-secondary); }
+.gateway-option { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 1rem; cursor: pointer; transition: var(--transition); }
+.gateway-option:hover { border-color: var(--color-accent); background: rgba(0, 194, 255, 0.02); }
+.gateway-option.selected { border-color: var(--color-primary); background: rgba(0, 87, 255, 0.04); box-shadow: 0 0 0 3px rgba(0, 87, 255, 0.1); }
+.gateway-option i { font-size: 1.75rem; width: 35px; text-align: center; }
+.gateway-option h4 { font-size: 0.95rem; color: var(--color-secondary); margin-bottom: 0.15rem; }
+.gateway-option p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+
+/* Factur Struk Invoice PAID layout style rules code blocks */
+.success-header { margin-bottom: 2rem; }
+.success-icon { font-size: 4rem; color: #10b981; margin-bottom: 1rem; }
+.invoice-details-block { background: var(--bg-main); border-radius: var(--radius-md); padding: 1.5rem; border: 1px solid var(--border-color); margin-bottom: 2rem; }
+.invoice-row { display: flex; justify-content: space-between; font-size: 0.9rem; padding: 0.6rem 0; border-bottom: 1px dashed var(--border-color); }
+.invoice-row:last-child { border-bottom: none; }
+.invoice-row span { color: var(--text-muted); }
+.badge { padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+.badge-success { background: #d1fae5; color: #065f46; }
+.invoice-items-table { max-height: 200px; overflow-y: auto; margin-bottom: 1.5rem; }
+.invoice-item-mini { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0; color: var(--text-dark); }
+.font-bold { font-weight: 700 !important; font-size: 1.1rem !important; }

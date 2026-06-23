@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk Premium | MOLS RB Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .detail-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; margin-bottom: 5rem; background: #fff; padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+        .detail-gallery img { width: 100%; height: auto; border-radius: var(--radius-md); object-fit: contain; background: #fff; max-height: 450px; }
+        .detail-content h1 { font-size: 2.2rem; color: var(--color-secondary); margin-bottom: 0.5rem; }
+        .detail-brand { font-weight: 600; text-transform: uppercase; color: var(--color-primary); letter-spacing: 1px; font-size: 0.9rem; }
+        .detail-price { font-size: 2rem; font-weight: 700; color: var(--color-primary); margin: 1.5rem 0; }
+        .detail-specs { margin-top: 2rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
+        .detail-specs table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        .detail-specs table td { padding: 0.75rem; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; }
+        .detail-specs table td:first-child { font-weight: 600; color: var(--color-secondary); width: 30%; }
+        @media (max-width: 768px) { .detail-wrapper { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div id="toast-container" class="toast-container"></div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-brand">MOLS <span class="logo-rb">RB Tech</span></a>
+            <div class="header-actions">
+                <a href="cart.html" class="action-btn cart-trigger"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cart-count">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="detail-page-container">
+        </div>
+
+    <script src="js/products.data.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = parseInt(params.get('id'));
+            const container = document.getElementById('detail-page-container');
+
+            if (!productId || typeof productsData === 'undefined') {
+                container.innerHTML = `<p class='text-center' style='padding:5rem 0;'>Produk tidak terdeteksi atau sistem basis data gagal dimuat.</p>`;
+                return;
+            }
+
+            const item = productsData.find(p => p.id === productId);
+            if (!item) {
+                container.innerHTML = `<p class='text-center' style='padding:5rem 0;'>Maaf, Produk dengan ID tersebut tidak ditemukan.</p>`;
+                return;
+            }
+
+            // Set Title Halaman dinamis
+            document.title = `${item.nama} | MOLS RB Tech`;
+
+            container.innerHTML = `
+                <div class="detail-wrapper">
+                    <div class="detail-gallery">
+                        <img src="${item.gambar}" alt="${item.nama}">
+                    </div>
+                    <div class="detail-content">
+                        <span class="detail-brand">${item.brand}</span> / <span>${item.kategori}</span>
+                        <h1>${item.nama}</h1>
+                        <div class="product-meta" style="margin-bottom:1rem;">
+                            <span class="rating" style="background:#fef3c7; color:#d97706; padding:0.25rem 0.6rem; border-radius:4px;"><i class="fa-solid fa-star"></i> ${item.rating}</span>
+                            <span class="stock" style="margin-left:1rem; font-weight:500;">Sisa Stok: ${item.stok} unit</span>
+                        </div>
+                        <div class="detail-price">Rp ${item.harga.toLocaleString('id-ID')}</div>
+                        <p class="detail-description" style="line-height:1.7; color:#4b5563;">${item.deskripsi}</p>
+                        
+                        <button class="btn btn-primary" style="width:100%; padding:1rem; margin-top:1.5rem; font-size:1.1rem;" onclick="CartModule.add(${item.id})">
+                            <i class="fa-solid fa-cart-plus"></i> Tambahkan Ke Keranjang Belanja
+                        </button>
+
+                        <div class="detail-specs">
+                            <h3>Spesifikasi Perangkat</h3>
+                            <table>
+                                <tr><td>Kategori</td><td>${item.kategori}</td></tr>
+                                <tr><td>Brand Vendor</td><td>${item.brand}</td></tr>
+                                <tr><td>Garansi Resmi</td><td>1 Tahun Indonesia Resmi</td></tr>
+                                <tr><td>Kondisi Fisik</td><td>Baru & Segel (BNIB)</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
