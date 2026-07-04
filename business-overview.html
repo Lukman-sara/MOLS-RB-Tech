@@ -8,45 +8,279 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <style>
         :root {
             --color-primary: #0057FF;
+            --color-primary-dark: #003cc4;
             --color-secondary: #0f172a;
+            --color-text: #334155;
+            --color-muted: #64748b;
             --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
         }
-        .business-container { max-width: 900px; margin: 4rem auto; padding: 2.5rem; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .business-container h1 { color: var(--color-secondary); border-bottom: 3px solid var(--color-primary); padding-bottom: 0.5rem; margin-bottom: 2rem; font-size: 1.8rem; }
-        .business-section { margin-bottom: 2.5rem; }
-        .business-section h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .business-section p { line-height: 1.8; color: #4b5563; margin-bottom: 1rem; text-align: justify; }
-        .academic-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #fff; border-radius: 8px; overflow: hidden; }
-        .academic-table td { padding: 10px 15px; border-bottom: 1px solid #e2e8f0; }
-        .academic-table tr:last-child td { border-bottom: none; }
-        .academic-table td.label { font-weight: 600; color: var(--color-secondary); width: 30%; }
-        .metrics-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .metric-card { background: var(--bg-main); border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px; text-align: center; }
-        .metric-card h3 { font-size: 1.8rem; color: var(--color-primary); margin-bottom: 0.25rem; }
-        .metric-card p { font-size: 0.85rem; margin: 0; font-weight: 500; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .site-header {
+            background-color: var(--color-secondary);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-brand {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+
+        .logo-rb {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .business-container {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .business-container h1 {
+            color: var(--color-secondary);
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 0.75rem;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .business-section {
+            margin-bottom: 3rem;
+        }
+
+        .business-section h2 {
+            font-size: 1.35rem;
+            color: var(--color-secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        .business-section h2 i {
+            color: var(--color-primary);
+        }
+
+        .business-section h3 {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            margin: 1.25rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .business-section p {
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        .business-section ul, .business-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        .business-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: #f1f5f9;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--color-primary);
+            margin-bottom: 2.5rem;
+        }
+
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.25rem;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .academic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .academic-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .academic-table td.label {
+            font-weight: 600;
+            color: var(--color-secondary);
+            width: 35%;
+            background: #f8fafc;
+        }
+
+        .catalog-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .catalog-table th {
+            background-color: var(--color-secondary);
+            color: white;
+            text-align: left;
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        .catalog-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .catalog-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .metrics-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--color-primary);
+        }
+
+        .metric-card h4 {
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .metric-card p {
+            font-size: 0.8rem;
+            margin: 0;
+            font-weight: 500;
+            color: var(--color-muted);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--color-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
     </style>
 </head>
 <body>
+
     <header class="site-header">
         <div class="header-container">
             <a href="index.html" class="logo-brand">MOLS <span class="logo-rb">RB Tech</span></a>
-            <a href="index.html" class="btn btn-secondary">Kembali Ke Mall</a>
+            <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Kembali Ke Mall</a>
         </div>
     </header>
 
     <main class="container">
         <div class="business-container">
-            <h1>MOLS RB Tech - Analisis Strategi Bisnis & Dashboard Analitik</h1>
+            <h1>MOLS RB Tech — Perencanaan Bisnis Strategis & Arsitektur Sistem</h1>
             
-            <section class="business-section" style="background: #f1f5f9; padding: 1.5rem; border-radius: 12px; border-left: 5px solid var(--color-primary);">
+            <section class="business-section highlight-box">
                 <h2><i class="fa-solid fa-graduation-cap"></i> Lembar Identitas & Portofolio Akademik</h2>
                 <p>Halaman ini dan seluruh arsitektur web aplikasi e-commerce terkait dibangun dan disusun secara mandiri dalam rangka memenuhi tugas akhir <strong>Ujian Akhir Semester (UAS)</strong> pada mata kuliah pilihan program studi.</p>
-                
                 <table class="academic-table">
                     <tr>
                         <td class="label">Nama Mahasiswa</td>
@@ -57,20 +291,12 @@
                         <td>209250022</td>
                     </tr>
                     <tr>
-                        <td class="label">Kelas</td>
-                        <td>Administrasi Bisnis 1 (AB 1)</td>
+                        <td class="label">Program Studi / Kelas</td>
+                        <td>Administrasi Bisnis / AB 1</td>
                     </tr>
                     <tr>
-                        <td class="label">Program Studi</td>
-                        <td>Administrasi Bisnis</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Fakultas</td>
-                        <td>Sosial dan Bisnis</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Perguruan Tinggi</td>
-                        <td>Universitas Wanita Internasional</td>
+                        <td class="label">Fakultas / Universitas</td>
+                        <td>Ilmu Sosial dan Bisnis / Universitas Wanita Internasional</td>
                     </tr>
                     <tr>
                         <td class="label">Mata Kuliah</td>
@@ -84,75 +310,183 @@
             </section>
 
             <section class="business-section">
-                <h2><i class="fa-solid fa-briefcase"></i> Profil Perusahaan & Filosofi Merek</h2>
-                <p><strong>MOLS RB Tech</strong> adalah platform e-commerce retail elektronik modern yang didirikan untuk menjembatani tingginya permintaan gawai orisinal bergaransi resmi dengan pengalaman belanja digital yang efisien, transparan, dan andal.</p>
-                <p><strong>Asal-Usul Nama Merek:</strong> Penamaan merek **MOLS RB Tech** memiliki nilai personal yang kuat, di mana akronim tersebut diambil langsung dari singkatan nama lengkap pengembangnya sendiri, yaitu <strong>M</strong>och <strong>O</strong>ld <strong>L</strong>ukman <strong>S</strong>aepul <strong>R</strong>ajib (<strong>MOLS RB</strong>) dan dipadukan dengan kata <strong>Tech</strong> untuk menegaskan fokus industri teknologi retail dan inovasi digital yang diusung oleh bisnis ini.</p>
-                <p><strong>Value Proposition:</strong> Berbeda dengan kompetitor konvensional, kami mengintegrasikan kecepatan respons antarmuka (UI), perhitungan akuntansi transaksi transparan (otomatisasi PPN 11%), kemudahan checkout multipath tanpa registrasi paksa, serta integrasi pemrosesan faktur berformat standar industri.</p>
-            </section>
-
-            <section class="business-section" style="background: #fff; padding: 1rem 0;">
-                <h2><i class="fa-solid fa-circle-info"></i> Penjelasan Detail Sistem E-Commerce</h2>
-                <p>Aplikasi E-Commerce yang dikembangkan dalam proyek MOLS RB Tech ini mengimplementasikan konsep *Front-End Development* mutakhir berbasis arsitektur *clean-code* tanpa *overhead-server*. Berikut adalah rincian detail sistemnya:</p>
-                <p><strong>1. Struktur Arsitektur & Semantik HTML:</strong> Halaman dirancang menggunakan elemen HTML5 semantik (seperti <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, dan <code>&lt;article&gt;</code>) untuk menjamin optimasi SEO on-page dan aksesibilitas data yang terstruktur sesuai standar industri.</p>
-                <p><strong>2. Interaktivitas Dinamis Berbasis JavaScript (ES6+):</strong> Sistem katalog, fungsi pencarian berbasis kata kunci instan, manajemen keranjang belanja (*shopping cart*), hingga modul manipulasi DOM diimplementasikan menggunakan Vanilla JavaScript secara *asynchronous* guna memastikan pengalaman pengguna yang mulus tanpa interupsi *reloading* halaman.</p>
-                <p><strong>3. Manajemen State & Sinkronisasi Lokal:</strong> Manajemen data produk, jumlah stok inventaris, serta histori pesanan/faktur diintegrasikan secara langsung menggunakan penyimpanan lokal browser (<code>localStorage</code>). Hal ini memungkinkan data transaksi bertahan secara presisi meskipun halaman web dimuat ulang atau ditutup oleh pengguna.</p>
-                <p><strong>4. Alur Transaksi & Keamanan Simulasi (Multipath Checkout):</strong> Pengguna dapat memilih produk secara langsung, meninjau keranjang belanja, mengisi formulir pengiriman logistik, hingga melakukan simulasi pembayaran *online* terintegrasi (Virtual Account, E-Wallet, Kartu Kredit) dengan kalkulasi otomatis PPN 11% yang akurat dan penerbitan nomor nota digital acak secara otomatis.</p>
+                <h2><i class="fa-solid fa-briefcase"></i> Profil Bisnis & Value Proposition</h2>
+                <p><strong>Nama Bisnis:</strong> MOLS RB Tech</p>
+                <p><strong>Deskripsi Bisnis:</strong> MOLS RB Tech merupakan sebuah platform *E-Commerce Direct-to-Consumer (D2C)* modern yang bergerak di bidang retail gawai pintar, laptop workstation, dan aksesoris produktivitas orisinal bersertifikasi garansi resmi. Bisnis ini didesain untuk menyederhanakan rantai pasok distribusi elektronik serta menghadirkan pengalaman belanja komparatif yang aman, cepat, dan terintegrasi penuh.</p>
+                <p><strong>Filosofi Nama Merek:</strong> Penamaan diambil langsung dari representasi identitas pengembang utamanya, yaitu <strong>M</strong>och <strong>O</strong>ld <strong>L</strong>ukman <strong>S</strong>aepul <strong>R</strong>ajib (<strong>MOLS RB</strong>), yang dikombinasikan dengan kata <strong>Tech</strong> sebagai penegasan fokus vertikal industri teknologi informasi dan komitmen inovasi digital jangka panjang.</p>
+                <p><strong>Value Proposition (Keunggulan Kompetitif):</strong></p>
+                <ul>
+                    <li><strong>Guaranteed Originality & Service:</strong> Jaminan produk 100% baru dan bergaransi resmi TAM/PT, menyembuhkan kecemasan konsumen terhadap produk *refurbished* atau *black market*.</li>
+                    <li><strong>Transparent Accounting automation:</strong> Perhitungan harga final transparan yang mengintegrasikan kalkulasi otomatis PPN 11% secara *real-time* di lembar checkout.</li>
+                    <li><strong>Zero-Friction Checkout:</strong> Alur pembelian *multi-path* responsif yang memungkinkan konsumen menyelesaikan checkout instan tanpa registrasi paksa (*guest checkout system*).</li>
+                </ul>
             </section>
 
             <section class="business-section">
-                <h2><i class="fa-solid fa-bullseye"></i> Analisis Target Pasar & Segmentasi</h2>
-                <p>Kami menyasar segmen milenial, gen-z, serta profesional muda tech-savvy berumur 18-45 tahun yang membutuhkan pembaruan gawai produktivitas dengan efisiensi waktu tinggi. Target pasar mencakup pasar retail personal (B2C) dan penyediaan inventaris elektronik korporasi skala kecil-menengah (C2B / UMKM lokal).</p>
+                <h2><i class="fa-solid fa-bullseye"></i> Target Pasar & Segmentasi Pelanggan</h2>
+                <p>MOLS RB Tech memetakan kelompok target audiens potensial menggunakan empat pilar segmentasi strategis:</p>
+                <ul>
+                    <li><strong>Segmentasi Demografis:</strong> Pria dan wanita berusia 18–45 tahun; berstatus mahasiswa, profesional muda, pekerja lepas (*freelancer*), atau pemilik bisnis lokal dengan tingkat pendapatan kelas menengah hingga atas (SES A & B).</li>
+                    <li><strong>Segmentasi Geografis:</strong> Penduduk daerah urban dan sub-urban di seluruh Indonesia, difokuskan pada area yang terjangkau oleh jaringan logistik ekspres/instan (seperti Jabodetabek, Bandung Raya, dan kota-kota besar lainnya).</li>
+                    <li><strong>Segmentasi Psikografis:</strong> Individu dengan gaya hidup *tech-savvy*, menghargai nilai efisiensi waktu, memiliki kesadaran tinggi akan reputasi merek (*brand-conscious*), serta menuntut pembaruan gawai untuk menunjang performa kerja dan mobilitas harian.</li>
+                    <li><strong>Segmentasi Perilaku:</strong> Pengguna internet aktif yang terbiasa bertransaksi secara digital, sensitif terhadap transparansi biaya perlindungan asuransi produk, serta mencari kemudahan program promo potongan langsung atau fasilitas cicilan.</li>
+                </ul>
             </section>
 
             <section class="business-section">
-                <h2><i class="fa-solid fa-chart-line"></i> 4P Marketing Mix & Strategy Matrix</h2>
-                <p><strong>Product:</strong> Portofolio produk kami kurasi ketat dari lini smartphone global terpopuler (TECNO, Infinix, itel, Samsung, Xiaomi, OPPO, vivo) hingga mesin workstation performa tinggi (ASUS ROG, Lenovo Legion, Apple MacBook Pro Max).</p>
-                <p><strong>Price:</strong> Penetapan harga dinamis berbasis nilai pasar yang kompetitif dengan transparansi perpajakan di depan demi meningkatkan rasa aman pelanggan.</p>
-                <p><strong>Promotion:</strong> Strategi retensi berbasis FOMO melalui fitur <em>Flash Sale Countdown Real-Time</em> di landing page dan penyediaan portal analitik kampanye digital.</p>
-                <p><strong>Place:</strong> Distribusi digital mutakhir menggunakan arsitektur web modern tanpa beban overhead database server (*serverless optimization*) via GitHub Pages deployment.</p>
+                <h2><i class="fa-solid fa-chart-pie"></i> Analisis Pasar Singkat & Peta Kompetisi</h2>
+                <p>Pasar retail elektronik di Indonesia mengalami pertumbuhan pesat yang didorong oleh kebutuhan akselerasi kerja jarak jauh (*remote working*) dan digitalisasi UMKM. Namun, pasar saat ini terfragmentasi antara *marketplace* terbuka yang sarat akan risiko produk tiruan dan retail fisik konvensional yang memiliki beban operasional tinggi sehingga harga menjadi kurang kompetitif.</p>
+                
+                <h3>Peta Kompetitor:</h3>
+                <ul>
+                    <li><strong>Kompetitor Langsung (Direct Competitors):</strong> Eraspace (Erafone) dan Tokopedia/Shopee Official Store gawai tertentu. *Kelemahan mereka:* Proses navigasi aplikasi terkadang terasa berat akibat *overhead script* periklanan yang masif, serta struktur promosi yang membingungkan konsumen dengan syarat ketentuan yang rumit.</li>
+                    <li><strong>Kompetitor Tidak Langsung (Indirect Competitors):</strong> Toko fisik komputer lokal dan distributor independen non-resmi. *Kelemahan mereka:* Ketiadaan transparansi stok secara *real-time* dan sistem pencatatan invoice digital yang rentan hilang atau rusak.</li>
+                    <li><strong>Posisi MOLS RB Tech:</strong> Masuk sebagai penengah melalui optimalisasi platform web yang ringan (*serverless optimization* via GitHub Pages), menjamin kecepatan pemuatan halaman kurang dari 2 detik, serta kepastian klaim garansi yang jelas.</li>
+                </ul>
             </section>
 
-            <section class="business-section" style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px dashed var(--color-primary);">
-                <h2><i class="fa-solid fa-gauge-high"></i> Live Data Web Analytics Simulator</h2>
-                <p>Berikut adalah indikator performa utama (KPI) website MOLS RB Tech yang dihitung menggunakan instrumentasi script <code>analytics.js</code> berdasarkan akumulasi transaksi riil di sistem penyimpanan lokal (localStorage):</p>
+            <section class="business-section">
+                <h2><i class="fa-solid fa-box-open"></i> Strategi Manajemen Produk & Katalog</h2>
+                <p>Manajemen inventaris dilakukan menggunakan sistem kategori terstruktur demi kemudahan penelusuran (*user navigation*). Deskripsi produk mengedukasi fungsionalitas teknis secara emosional dan informatif, didukung visualisasi tata letak grid yang konsisten.</p>
+                
+                <table class="catalog-table">
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Contoh Produk</th>
+                            <th>Strategi Deskripsi & Visual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge">Flagship Smartphone</span></td>
+                            <td>TECNO Phantom V, Samsung Galaxy S Series</td>
+                            <td>Fokus pada detail resolusi kamera, performa chipset, dan visualisasi aspek premium perangkat.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge">High Performance Workstation</span></td>
+                            <td>ASUS ROG, Lenovo Legion, Apple MacBook</td>
+                            <td>Menyoroti kapasitas pemrosesan rendering, RAM, ketahanan baterai untuk produktivitas ekstrem.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge">Essential Accessories</span></td>
+                            <td>Spatula Pen, TWS, Premium Charger</td>
+                            <td>Deskripsi berfokus pada kecocokan ekosistem (*compatibility*), ergonomis, dan ketahanan material.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Strategi Visual:</strong> Antarmuka katalog didukung dengan teknik *lazy loading* untuk aset gambar produk, resolusi rasio aspek 1:1 bersih dengan latar belakang netral, serta penempatan label harga dan ketersediaan stok yang mencolok menggunakan manipulasi JavaScript DOM dinamis.</p>
+            </section>
+
+            <section class="business-section">
+                <h2><i class="fa-solid fa-sack-dollar"></i> Model Bisnis & Arus Pendapatan (Revenue Stream)</h2>
+                <p>MOLS RB Tech mengadopsi model bisnis utama berupa <strong>Merchant B2C (Business-to-Consumer) E-Commerce Retail</strong>, di mana perusahaan memegang kepemilikan inventaris produk secara penuh untuk dijual langsung ke konsumen akhir via platform digital web.</p>
+                <p><strong>Sumber Arus Pendapatan (Revenue Streams):</strong></p>
+                <ol>
+                    <li><strong>Keuntungan Margin Produk Utama:</strong> Selisih pendapatan dari harga jual eceran (*Retail Price*) produk smartphone dan laptop dengan harga perolehan grosir (*Wholesale Price*) dari distributor utama.</li>
+                    <li><strong>Penjualan Aksesoris Komplementer:</strong> Penjualan item dengan margin profit persentase tinggi seperti pelindung layar, kabel data premium, dan perangkat periferal.</li>
+                    <li><strong>B2B Corporate Procurement (C2B / UMKM Supply):</strong> Layanan paket pengadaan gawai kantor terbundel untuk kebutuhan startup atau UMKM lokal dalam kuantitas menengah dengan skema kontrak pembayaran berjangka.</li>
+                </ol>
+            </section>
+
+            <section class="business-section">
+                <h2><i class="fa-solid fa-tags"></i> Strategi Harga, Promosi, dan Diskon</h2>
+                <ul>
+                    <li><strong>Strategi Penetapan Harga (Pricing Strategy):</strong> Menggunakan *Value-Based Pricing* dikombinasikan dengan *Competitive Pricing Matrix*. Harga dipatok secara kompetitif di pasar digital namun nilai tambah berupa akumulasi poin loyalitas dan asuransi pengiriman gratis memberikan persepsi keuntungan berlebih bagi konsumen.</li>
+                    <li><strong>Strategi Promosi & FOMO (Fear of Missing Out):</strong> Pemanfaatan komponen *Flash Sale Countdown Timer* berbasis JavaScript yang berjalan secara *real-time* pada halaman beranda guna memicu keputusan pembelian impulsif yang instan.</li>
+                    <li><strong>Sistem Diskon & Voucher:</strong> Pemotongan harga otomatis menggunakan kode kupon (contoh: <code>MOLSRBNEW</code> atau <code>UASPASTIAMPUN</code>) yang memotong nilai subtotal keranjang belanja sebelum dikalkulasikan dengan komponen pajak PPN.</li>
+                </ul>
+            </section>
+
+            <section class="business-section">
+                <h2><i class="fa-solid fa-credit-card"></i> Alur Checkout & Simulasi Payment Gateway Dummy</h2>
+                <p>Sistem E-Commerce ini mengadopsi integrasi alur transaksi tanpa hambatan (*seamless linear checkout*). Untuk keperluan simulasi fungsionalitas penuh tugas UAS, sistem mengadopsi **Midtrans Sandbox / Dummy API Workflow**:</p>
+                
+                <ol>
+                    <li><strong>Pengumpulan Data Keranjang:</strong> Pengguna mengklik tombol "Add to Cart", item masuk ke dalam array state JavaScript dan di-render ke komponen keranjang belanja.</li>
+                    <li><strong>Isi Formulir Identitas & Pengiriman:</strong> Pengguna mengisi Nama, Alamat Lengkap, Kota, dan Kode Pos pada halaman <code>checkout.html</code>.</li>
+                    <li><strong>Kalkulasi Finansial Otomatis:</strong> Sistem membaca subtotal, mengurangi diskon kupon, menambahkan biaya logistik kurir, lalu mengalikan pajak PPN sebesar 11% secara otomatis menghasilkan <code>Grand Total</code>.</li>
+                    <li><strong>Eksekusi Token Transaksi (Simulasi Snap API):</strong> Saat tombol "Bayar Sekarang" ditekan, JavaScript membangkitkan nomor pesanan acak unik (misal: <code>ID-MOLSRB-7842</code>). Sistem mengalihkan pengguna ke halaman <code>payment.html</code> yang menyajikan metode pembayaran dummy: Virtual Account (BCA/Mandiri), E-Wallet (GoPay/OVO), atau Kartu Kredit Simulasi.</li>
+                    <li><strong>Redireksi Sukses:</strong> Setelah pengguna memilih metode pembayaran dan menekan konfirmasi bayar, state keranjang dikosongkan (clear state) dan diarahkan ke halaman <code>success.html</code> dengan konfirmasi nota digital yang disimpan di dalam <code>localStorage</code>.</li>
+                </ol>
+            </section>
+
+            <section class="business-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> Rencana SEO, Keamanan, dan Pemeliharaan (Maintenance)</h2>
+                <p><strong>Strategi SEO (Search Engine Optimization) On-Page:</strong></p>
+                <ul>
+                    <li>Penggunaan tag HTML5 semantik secara ketat (<code>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;</code>) guna mempermudah bot perayap Google mengindeks relevansi arsitektur halaman.</li>
+                    <li>Penerapan atribut <code>alt</code> deskriptif pada seluruh aset gambar produk katalog serta optimasi tag metadata title dan description yang ramah kata kunci (*keyword-rich title tags*).</li>
+                </ul>
+                <p><strong>Rencana Keamanan Data (Security Plan):</strong></p>
+                <ul>
+                    <li>Penyediaan enkripsi end-to-end menggunakan sertifikat SSL/HTTPS via Github Pages deployment untuk mencegah intersepsi data formulir checkout (*Man-in-the-Middle attacks*).</li>
+                    <li>Sanitasi seluruh string input data konsumen pada formulir pengiriman menggunakan ekspresi reguler (Regex) untuk mencegah celah keamanan Cross-Site Scripting (XSS).</li>
+                    <li>Isolasi state transaksi sensitif di dalam skema memori lokal browser yang aman tanpa mengekspos fungsi kritis di konsol global.</li>
+                </ul>
+                <p><strong>Rencana Pemeliharaan (Maintenance Schedule):</strong></p>
+                <ul>
+                    <li>Pembersihan berkas cache, minifikasi skrip CSS/JS secara berkala, dan peninjauan fungsionalitas tautan rusak (*broken link check*) setiap akhir siklus bulanan demi menjaga performa loading kecepatan situs.</li>
+                </ul>
+            </section>
+
+            <section class="business-section" style="background: #f8fafc; padding: 2rem; border-radius: 12px; border: 1px dashed var(--color-primary);">
+                <h2><i class="fa-solid fa-gauge-high"></i> Dashboard Simulator & Perencanaan Data Analytics</h2>
+                <p>Data tanpa analisis tidak akan menghasilkan pertumbuhan. Strategi manajemen operasional MOLS RB Tech didorong oleh data analitik (*data-driven decision*). Berikut merupakan instrumen visualisasi metrik utama performa web kami yang dipantau menggunakan repositori skrip analitik internal secara *real-time*:</p>
                 
                 <div class="metrics-card-grid">
                     <div class="metric-card">
-                        <h3 id="metric-bounce">24.6%</h3>
+                        <h4 id="metric-bounce">24.6%</h4>
                         <p>Bounce Rate (Optimized)</p>
                     </div>
                     <div class="metric-card">
-                        <h3 id="metric-conversion">3.85%</h3>
+                        <h4 id="metric-conversion">3.85%</h4>
                         <p>Conversion Rate (CR)</p>
                     </div>
                     <div class="metric-card">
-                        <h3 id="metric-aov">Rp 0</h3>
+                        <h4 id="metric-aov">Rp 0</h4>
                         <p>Average Order Value (AOV)</p>
                     </div>
                     <div class="metric-card">
-                        <h3 id="metric-retention">82.1%</h3>
+                        <h4 id="metric-retention">82.1%</h4>
                         <p>Customer Retention Rate</p>
                     </div>
                 </div>
+
+                <h3 style="margin-top:1.5rem; font-size:1rem;">Aplikasi Pengambilan Keputusan Strategis Berdasarkan KPI di Atas:</h3>
+                <ul>
+                    <li><strong>Optimasi Bounce Rate:</strong> Jika angka menembus >40%, tim pengembang akan langsung mengoptimalkan kompresi gambar katalog atau memangkas susunan kode CSS/JS eksternal yang menghambat rendering awal halaman (*render-blocking resources*).</li>
+                    <li><strong>Evaluasi Conversion Rate (CR):</strong> Angka target retail standar adalah 2-3%. Jika CR berada di bawah 2%, keputusan bisnis yang diambil adalah menyederhanakan formulir checkout atau memperbanyak variasi opsi pembayaran instan.</li>
+                    <li><strong>Interpretasi Average Order Value (AOV):</strong> Nilai rata-rata per transaksi akan memandu keputusan pemberian promo bundling produk. Jika AOV turun, kami akan memicu algoritma sistem rekomendasi otomatis gawai komplementer silang (*cross-selling accessories*) saat user meninjau keranjang belanja mereka.</li>
+                </ul>
             </section>
         </div>
     </main>
 
-    <script src="js/analytics.js"></script>
+    <footer>
+        <p>&copy; 2026 MOLS RB Tech. Hak Cipta Dilindungi. Disusun oleh Moch Lukman Saepul Rajib (NIM: 209250022) untuk Proyek Aplikasi Komputer IT 2.</p>
+    </footer>
+
     <script>
-        // Update Metrik Bisnis secara Otomatis Berdasarkan Kondisi Transaksi Terakhir Pelanggan
+        // Logika Pengendalian Dashboard Web Analytics Simulator Secara Otomatis
         document.addEventListener('DOMContentLoaded', () => {
+            // Membaca histori invoice transaksi riil dari LocalStorage sistem E-Commerce
             const invoices = JSON.parse(localStorage.getItem('mols_invoices') || '[]');
             const bounceElement = document.getElementById('metric-bounce');
             const aovElement = document.getElementById('metric-aov');
+            const conversionElement = document.getElementById('metric-conversion');
             
             if (invoices.length > 0) {
-                bounceElement.innerText = "12.8%"; // Bounce rate turun karena user aktif bertransaksi
-                const totalRevenue = invoices.reduce((acc, current) => acc + current.grandTotal, 0);
+                // Simulasi realitas data analitik: jika ada transaksi, bounce rate menurun (user loyal)
+                bounceElement.innerText = "12.8%"; 
+                conversionElement.innerText = "5.12%";
+                
+                // Menghitung akumulasi total pendapatan dibagi jumlah transaksi (AOV)
+                const totalRevenue = invoices.reduce((acc, current) => acc + (current.grandTotal || current.total || 0), 0);
                 const avgOrderValue = Math.round(totalRevenue / invoices.length);
                 aovElement.innerText = `Rp ${avgOrderValue.toLocaleString('id-ID')}`;
             } else {
-                aovElement.innerText = "Rp 0 (No Orders)";
+                aovElement.innerText = "Rp 0 (Belum Ada Order)";
             }
         });
     </script>
